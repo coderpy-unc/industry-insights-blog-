@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedded Systems in Robotics: How Modern Machines Make Decisions — Sirona Robotics</title>
+  <meta name="description" content="A robot is not a mechanical arm with a camera bolted on. It is an embedded system — a tightly integrated stack of hardware, firmware, and software that converts sensor data into physical action in real time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f7f3ed; --bg-card: #f0ebe2; --ink: #1c2b2b; --ink-2: #3d4f4f;
+      --ink-3: #7a8a8a; --teal: #2d6b6b; --copper: #8b5e3c; --line: #ddd6cc; --max: 700px;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; font-size: 17px; font-weight: 300; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    nav { background: var(--bg); border-bottom: 1px solid var(--line); padding: 0 2.5rem; height: 72px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .nav-logo-wrap { display: flex; flex-direction: column; line-height: 1.15; }
+    .nav-logo-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--teal); }
+    .nav-logo-tag { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper); }
+    .nav-links { display: flex; gap: 2.25rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--teal); color: var(--teal); padding: 0.45rem 1.1rem; font-weight: 500; transition: all 0.15s; }
+    .nav-cta:hover { background: var(--teal); color: white; }
+    .article-wrap { max-width: var(--max); margin: 0 auto; padding: 4rem 2rem 7rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 3rem; transition: color 0.15s; }
+    .back-link:hover { color: var(--teal); }
+    .article-meta-top { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 1.5rem; }
+    .article-meta-top .tag { color: var(--copper); border-bottom: 1px solid var(--copper); padding-bottom: 1px; }
+    .article-meta-top .dot { color: var(--line); }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4.5vw, 2.55rem); line-height: 1.15; color: var(--ink); margin-bottom: 2rem; font-weight: 600; }
+    .author-row { display: flex; align-items: center; gap: 1rem; padding: 1.4rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 3rem; }
+    .author-avatar { width: 40px; height: 40px; background: var(--teal); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; flex-shrink: 0; }
+    .author-name { font-weight: 500; font-size: 0.88rem; color: var(--ink); }
+    .author-org { font-size: 0.76rem; color: var(--ink-3); margin-top: 2px; }
+    .content { color: var(--ink-2); }
+    .content p { margin-bottom: 1.5rem; }
+    .content h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin: 3rem 0 1rem; }
+    .content ul { margin: 0.5rem 0 1.5rem 1.25rem; }
+    .content li { margin-bottom: 0.65rem; }
+    .content strong { color: var(--ink); font-weight: 500; }
+    .content a { color: var(--teal); border-bottom: 1px solid rgba(45,107,107,0.3); }
+    .content .callout { background: var(--bg-card); border-left: 2px solid var(--teal); padding: 1.25rem 1.5rem; margin: 2rem 0; font-size: 0.93rem; }
+    .content .pull-quote { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-style: italic; color: var(--teal); line-height: 1.5; padding: 2.25rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 2.5rem 0; }
+    .layers-grid { display: grid; gap: 1rem; margin: 1.5rem 0 2rem; }
+    .layer-card { background: var(--bg-card); border: 1px solid var(--line); padding: 1.1rem 1.3rem; }
+    .layer-card .layer-num { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper); margin-bottom: 0.3rem; }
+    .layer-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--ink); margin-bottom: 0.4rem; font-weight: 600; }
+    .layer-card p { font-size: 0.88rem; color: var(--ink-3); margin: 0; line-height: 1.6; }
+    .cta-box { margin-top: 4rem; padding: 2.5rem; background: var(--bg-card); border: 1px solid var(--line); }
+    .cta-box .label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper); margin-bottom: 0.75rem; }
+    .cta-box h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--ink); margin-bottom: 0.75rem; }
+    .cta-box p { font-size: 0.9rem; color: var(--ink-3); margin-bottom: 1.5rem; font-weight: 300; }
+    .cta-link { display: inline-block; background: var(--teal); color: white; padding: 0.7rem 1.6rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: opacity 0.15s; }
+    .cta-link:hover { opacity: 0.88; }
+    footer { border-top: 1px solid var(--line); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--teal); font-weight: 600; }
+    .footer-right { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); display: flex; gap: 1.5rem; }
+    .footer-right a:hover { color: var(--teal); }
+    @media (max-width: 640px) { .article-wrap { padding: 2.5rem 1.25rem 4rem; } .nav-links, .nav-cta { display: none; } footer { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="https://sironarobotics.com/" class="nav-logo-wrap">
+    <span class="nav-logo-name">Sirona Robotics</span>
+    <span class="nav-logo-tag">Efficiency. Collaboration. People.</span>
+  </a>
+  <div class="nav-links">
+    <a href="https://sironarobotics.com/#copilot">Co-Pilot</a>
+    <a href="https://sironarobotics.com/#orchestration">Platform</a>
+    <a href="https://sironarobotics.com/#sectors">Sectors</a>
+    <a href="https://sironarobotics.com/blog/">Insights</a>
+  </div>
+  <a href="https://sironarobotics.com/#contact" class="nav-cta">Contact →</a>
+</nav>
+<div class="article-wrap">
+  <a href="https://sironarobotics.com/blog/" class="back-link">← All Insights</a>
+  <div class="article-meta-top">
+    <span class="tag">Robotics Technology</span>
+    <span class="dot">·</span>
+    <span>March 29, 2026</span>
+    <span class="dot">·</span>
+    <span>5 min read</span>
+  </div>
+  <h1>Embedded Systems in Robotics: How Modern Machines Make Decisions</h1>
+  <div class="author-row">
+    <div class="author-avatar">S</div>
+    <div>
+      <div class="author-name">Sirona Robotics</div>
+      <div class="author-org">Robot Workforce Infrastructure · Singapore</div>
+    </div>
+  </div>
+  <div class="content">
+    <p>When a humanoid robot navigates a hotel corridor, avoids a housekeeper's trolley, and places a towel on a rack without prompting — the visible result obscures the computational complexity that produced it.</p>
+    <p>That capability lives in the embedded system: the hardware and firmware layer that sits between the physical world and the software that reasons about it. Understanding how this layer works is relevant for anyone evaluating, deploying, or integrating robotic systems in enterprise environments.</p>
+
+    <h2>What an Embedded System Is</h2>
+    <p>An embedded system is a combination of hardware and software designed to perform a specific function within a larger system, under real-time constraints. The key phrase is <strong>real-time</strong>: the embedded system must respond to physical events within a defined time window, or the response is useless.</p>
+    <p>In a drone, the flight controller must respond to attitude changes within milliseconds. In a warehouse AMR, the motor controller must adjust wheel speeds within microseconds to maintain trajectory. In a humanoid robot, joint controllers must coordinate hundreds of actuators at 100Hz to 1000Hz update rates to produce stable, human-like motion.</p>
+    <p>This is fundamentally different from software running on a general-purpose computer. A server application can tolerate variable latency. An embedded real-time controller cannot.</p>
+
+    <div class="pull-quote">"The robot is not the intelligence. The embedded system is the intelligence expressed in hardware."</div>
+
+    <h2>The Layers of a Robot's Embedded Stack</h2>
+    <p>A modern robotic system has multiple embedded layers, each with different latency requirements and responsibilities.</p>
+
+    <div class="layers-grid">
+      <div class="layer-card">
+        <div class="layer-num">Layer 01</div>
+        <h3>Actuator Layer</h3>
+        <p>Motor controllers, servo drivers, pneumatic valves. Run at kilohertz update rates. Their only job: accurately and safely execute commands from the layer above. Implemented in dedicated microcontrollers or FPGAs.</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-num">Layer 02</div>
+        <h3>Motion Control Layer</h3>
+        <p>Converts a desired trajectory into actuator commands. For a robot arm: inverse kinematics. For a mobile robot: velocity commands to wheel motors. Runs at tens to hundreds of hertz.</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-num">Layer 03</div>
+        <h3>Perception Layer</h3>
+        <p>Processes raw sensor data — cameras, LIDAR, IMUs, force sensors — into a world model. Computationally intensive; typically runs on GPU-accelerated embedded compute. Handles sensor fusion and computer vision.</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-num">Layer 04</div>
+        <h3>Task Execution Layer</h3>
+        <p>Executes the robot's current mission: navigate to X, pick up Y, open door Z. Receives the world model from perception, plans actions, and handles exceptions — what to do when the environment doesn't match expectations.</p>
+      </div>
+    </div>
+
+    <h2>Why This Architecture Matters for Enterprise Deployment</h2>
+    <p>The layered architecture has direct implications for how robotic systems integrate into enterprise environments.</p>
+    <p><strong>Failure modes are layer-specific.</strong> An actuator failure, a perception dropout, and a task planning error look similar from the outside — the robot stopped. They require completely different responses. Enterprise operations teams need to understand which layer is failing to diagnose issues efficiently, rather than escalating every incident to the vendor.</p>
+    <p><strong>Integration points are at defined interfaces.</strong> Enterprise systems — ERP, WMS, PMS, LIMS — connect to the robot at the task execution layer. The robot's fleet management API exposes task assignment, status reporting, and exception escalation. This defines exactly what data the robot can provide: task completion with timestamp — yes. Raw motor currents to a BI dashboard — no.</p>
+
+    <div class="callout">
+      Training data is generated at the perception layer. When a deployment improves over time — recognising more objects, navigating more reliably — that improvement comes from operational data fed back into perception models. This is why vendor support for supervised learning is critical for deployments expected to improve post-installation.
+    </div>
+
+    <p>At Sirona Robotics, our Co-Pilot platform is built on a full-stack embedded architecture with native enterprise connectivity. We deploy in hospitality, lab automation, and agriculture environments across Singapore — and are happy to walk engineering teams through the technical architecture before a deployment decision is made.</p>
+  </div>
+  <div class="cta-box">
+    <p class="label">Singapore · Robot Workforce Infrastructure</p>
+    <h3>Request a Technical Briefing</h3>
+    <p>Understand the embedded stack before you commit to a deployment. Sirona's engineering team walks through architecture, integration requirements, and training data strategy with enterprise teams evaluating robotic workforce solutions.</p>
+    <a href="https://sironarobotics.com/#contact" class="cta-link">Request a Briefing →</a>
+  </div>
+</div>
+<footer>
+  <span class="footer-logo">Sirona Robotics</span>
+  <div class="footer-right">
+    <a href="https://sironarobotics.com/blog/">Insights</a>
+    <a href="https://sironarobotics.com/#contact">Contact</a>
+    <span>© 2026</span>
+  </div>
+</footer>
+</body>
+</html>

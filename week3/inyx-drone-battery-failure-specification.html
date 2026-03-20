@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Most Drone Battery Packs Fail Within 6 Months — iNYX Batteries</title>
+  <meta name="description" content="Most drone battery failures are the predictable result of specification choices made before the pack was assembled. Here is what causes early failure — and what to require in a battery spec to prevent it.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --bg-2: #f8fffe; --ink: #0f1117; --ink-2: #374151;
+      --ink-3: #6b7280; --line: #e5e7eb; --accent: #1abc9c; --accent-dark: #154360; --max: 720px;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; font-size: 17px; font-weight: 300; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    nav { border-bottom: 1px solid var(--line); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: white; z-index: 100; }
+    .nav-logo { font-weight: 700; font-size: 1.1rem; color: var(--accent-dark); letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 2rem; font-size: 0.9rem; color: var(--ink-3); }
+    .nav-links a:hover { color: var(--ink); }
+    .article-wrap { max-width: var(--max); margin: 0 auto; padding: 3rem 2rem 6rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--ink-3); margin-bottom: 2.5rem; border: 1px solid var(--line); padding: 0.4rem 0.9rem; border-radius: 20px; transition: all 0.15s; }
+    .back-link:hover { color: var(--ink); border-color: #9ca3af; }
+    .article-meta-top { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem; font-size: 0.82rem; color: var(--ink-3); margin-bottom: 1.25rem; }
+    .article-meta-top .tag { background: #e8f8f5; color: var(--accent-dark); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 500; }
+    .article-meta-top .dot { color: var(--line); }
+    h1 { font-size: clamp(1.7rem, 4vw, 2.2rem); line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1.5rem; font-weight: 700; }
+    .author-row { display: flex; align-items: center; gap: 0.75rem; padding: 1.25rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 2.5rem; }
+    .author-avatar { width: 38px; height: 38px; background: var(--accent-dark); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+    .author-name { font-weight: 600; font-size: 0.9rem; line-height: 1.3; }
+    .author-org { font-size: 0.8rem; color: var(--ink-3); }
+    .content { color: var(--ink-2); }
+    .content p { margin-bottom: 1.4rem; }
+    .content h2 { font-size: 1.35rem; font-weight: 700; color: var(--ink); margin: 2.5rem 0 1rem; letter-spacing: -0.01em; }
+    .content ul, .content ol { margin: 0.75rem 0 1.4rem 1.5rem; }
+    .content li { margin-bottom: 0.5rem; }
+    .content strong { color: var(--ink); font-weight: 600; }
+    .content a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; }
+    .content .callout { background: #e8f8f5; border-left: 3px solid var(--accent); padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin: 1.5rem 0; font-size: 0.95rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    th { background: #e8f8f5; color: var(--accent-dark); font-weight: 600; text-align: left; padding: 0.65rem 0.85rem; border-bottom: 2px solid var(--accent); }
+    td { padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+    tr:last-child td { border-bottom: none; }
+    .cta-box { margin-top: 3.5rem; padding: 2rem; background: #f0fdf9; border: 1px solid #a7f3d0; border-radius: 10px; }
+    .cta-box h3 { font-size: 1.1rem; font-weight: 700; color: var(--accent-dark); margin-bottom: 0.5rem; }
+    .cta-box p { font-size: 0.9rem; color: var(--ink-3); margin-bottom: 1rem; }
+    .cta-link { display: inline-block; background: var(--accent-dark); color: white; padding: 0.6rem 1.3rem; border-radius: 6px; font-size: 0.88rem; font-weight: 500; }
+    .cta-link:hover { background: #1a5276; }
+    footer { border-top: 1px solid var(--line); padding: 1.75rem 2rem; text-align: center; font-size: 0.82rem; color: var(--ink-3); }
+    @media (max-width: 640px) { .article-wrap { padding: 2rem 1.25rem 4rem; } .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="https://inyxbatteries.com/" class="nav-logo">iNYX Batteries</a>
+  <div class="nav-links">
+    <a href="https://inyxbatteries.com/">Home</a>
+    <a href="https://inyxbatteries.com/blog/">Insights</a>
+    <a href="mailto:marketing@lithionpower.com">Contact</a>
+  </div>
+</nav>
+<div class="article-wrap">
+  <a href="https://inyxbatteries.com/blog/" class="back-link">← All Insights</a>
+  <div class="article-meta-top">
+    <span class="tag">Drone Power Systems</span>
+    <span class="dot">·</span>
+    <span>March 28, 2026</span>
+    <span class="dot">·</span>
+    <span>6 min read</span>
+  </div>
+  <h1>Why Most Drone Battery Packs Fail Within 6 Months — And How to Specify One That Won't</h1>
+  <div class="author-row">
+    <div class="author-avatar">P</div>
+    <div>
+      <div class="author-name">Piyush Gupta</div>
+      <div class="author-org">iNYX Batteries · Lithion Power Group, India</div>
+    </div>
+  </div>
+  <div class="content">
+    <p>Battery failure is the most common cause of drone mission abort and the most frequent source of unplanned maintenance cost in commercial UAV operations. Most of these failures are not random events — they are the predictable result of decisions made during battery specification.</p>
+    <p>At <a href="https://inyxbatteries.com">iNYX Batteries</a>, we supply LFP battery packs to drone OEMs and AMR manufacturers targeting US, European, and Japanese markets. The failure modes we see consistently in the field are almost always traceable to a small set of specification errors made at the procurement stage.</p>
+
+    <h2>The LiPo Performance Envelope Problem</h2>
+    <p>The majority of commercial drone battery packs use lithium polymer (LiPo) chemistry. LiPo cells offer the highest energy density available — important for flight time — but they operate within a narrow performance envelope. Outside that envelope, degradation is rapid and progressive.</p>
+    <p>The envelope has three dimensions:</p>
+    <ul>
+      <li><strong>Voltage limits.</strong> LiPo cells operate between 3.0V (minimum) and 4.2V (maximum charge). Exceeding 4.2V even briefly causes electrolyte oxidation. Dropping below 3.0V, even once, causes permanent capacity loss. Most early-failure packs have been repeatedly discharged too deeply — because the BMS cutoff was set too low or the operator pushed flight time too far.</li>
+      <li><strong>Temperature.</strong> LiPo cells degrade significantly faster above 40°C. A pack that runs warm during high-power manoeuvres and gets immediately plugged in for a fast charge will cycle through the most damaging part of the temperature-voltage stress space repeatedly. Cycle life at 45°C can be 40–50% lower than at 25°C.</li>
+      <li><strong>C-rate.</strong> The C-rate is the discharge current relative to the pack's capacity. LiPo cells have rated maximum C-rates — but this rating is at nominal temperature. As temperature rises, the safe C-rate decreases. Most commodity packs are rated at room temperature and deployed without thermal derating logic.</li>
+    </ul>
+
+    <h2>The BMS Specification Gap</h2>
+    <p>Most drone battery packs sold at commodity price points include a basic protection circuit — not a BMS. A protection circuit opens a FET when a hard limit is exceeded. It has no communication output, no temperature-based derating, no state of health tracking, and no integration with the flight controller.</p>
+    <p>A proper BMS for drone applications includes:</p>
+    <ul>
+      <li>Isolated communication interface (UART or CAN) so the flight controller can request real-time SOC, temperature, and cell delta voltage</li>
+      <li>Thermal derating firmware that reduces maximum discharge current as cell temperature rises</li>
+      <li>Cumulative cycle tracking that logs total energy throughput and flags packs approaching design life</li>
+      <li>Per-cell voltage monitoring with individual cell balancing — not just pack-level voltage</li>
+    </ul>
+    <div class="callout">Without these features, the flight controller is flying blind on battery state. The pilot sees a voltage number that approximates SOC under no load — but has no visibility into cell health, thermal state, or how close the pack is to its protection cutoff under actual flight load.</div>
+
+    <h2>The C-Rating Misunderstanding</h2>
+    <p>Drone battery packs are commonly advertised with a peak C-rating — often 30C, 40C, or higher. Two issues arise consistently.</p>
+    <p>First, <strong>peak C-rating is a burst figure</strong>, typically sustainable for seconds. The continuous C-rating — what the pack can deliver indefinitely without accelerated degradation — is usually 40–60% of the peak figure. A "40C" pack may have a continuous rating of only 20C.</p>
+    <p>Second, <strong>C-rating is specified at 25°C</strong>. At 40°C ambient plus internal heating from high discharge rates, the effective safe C-rating is lower. A pack without thermal derating logic will deliver 30C at 45°C cell temperature — while degrading at three to four times the rated cycle life speed.</p>
+
+    <h2>What to Require in a Drone Battery Specification</h2>
+    <table>
+      <tr><th>Specification Item</th><th>What to Require</th></tr>
+      <tr><td>Chemistry</td><td>LFP for cycle-life-critical applications; LiPo only where energy density is the binding constraint</td></tr>
+      <tr><td>BMS communication</td><td>UART or CAN output with per-cell voltage, temperature, SOC, SOH, and cycle count</td></tr>
+      <tr><td>Thermal derating</td><td>Documented derating curve: max current vs cell temperature</td></tr>
+      <tr><td>Cycle life</td><td>Stated at your actual discharge depth and temperature profile — not manufacturer's standard test conditions</td></tr>
+      <tr><td>Balancing</td><td>Per-cell balancing with delta voltage threshold below 20mV at end of charge</td></tr>
+    </table>
+    <p>iNYX battery packs are built on a BMS designed and manufactured by <a href="https://www.lithionpower.com">Lithion Power</a> — India's largest BMS manufacturer. Every pack includes isolated UART communication, thermal derating firmware, and cycle tracking. Currently supplying drone and AMR OEMs. UL certification in progress.</p>
+  </div>
+  <div class="cta-box">
+    <h3>Specify a pack that actually lasts</h3>
+    <p>Smart BMS powered by Lithion Power Group. Customisable for your drone or AMR platform. Available in 24V and 48V LFP configurations.</p>
+    <a href="mailto:marketing@lithionpower.com" class="cta-link">Start a conversation → marketing@lithionpower.com</a>
+  </div>
+</div>
+<footer>
+  <p>© 2026 iNYX Batteries · Part of Lithion Power Group, India</p>
+  <p style="margin-top:0.4rem"><a href="mailto:marketing@lithionpower.com">marketing@lithionpower.com</a> · <a href="https://inyxbatteries.com/">inyxbatteries.com</a></p>
+</footer>
+</body>
+</html>
